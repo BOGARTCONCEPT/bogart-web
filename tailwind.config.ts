@@ -15,4 +15,12 @@ export default {
     },
   },
   plugins: [],
+  safelist: [
+    'text-6xl',
+    'text-5xl',
+    'text-4xl',
+    'text-3xl',
+    'text-2xl',
+    'text-xl',
+  ]
 } satisfies Config;
