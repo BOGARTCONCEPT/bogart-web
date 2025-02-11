@@ -1,101 +1,137 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram";
 import { faTiktok } from "@fortawesome/free-brands-svg-icons/faTiktok";
+import { faSpotify } from "@fortawesome/free-brands-svg-icons/faSpotify";
 import Link from "next/link";
 
-const menuItems = [
-  { text: "GET TICKETS", url: "https://www.fourvenues.com/es/bogart", enabled: true, textSize: "5xl", mobileTextSize: "2xl" },
-  { text: "PRODUCTS", url: "/products", enabled: false, textSize: "2xl", mobileTextSize: "lg" },
-  { text: "RENDERS", url: "/renders", enabled: false, textSize: "2xl", mobileTextSize: "lg" },
-  { text: "HISTORY", url: "/history", enabled: false, textSize: "2xl", mobileTextSize: "lg" },
-];
 
 export default function HomeComponent() {
   return (
+    <>
+    
     <div
-      className="relative min-h-screen font-geist"
+      className="relative min-h-screen font-geist hidden sm:block"
       style={{
-        backgroundImage: `url('/imgs/HORIZONTAL.png')`,
+        backgroundImage: `url('/imgs/HORIZONTAL_4K.png')`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
       }}
     >
       <div className="min-h-screen flex flex-col w-full">
-        {/* Logo Section */}
-        <div className="relative w-full h-auto">
-          <div className="relative w-full h-48">
-            <img
-              src="/imgs/logo_no_bg.png"
-              alt="Your Image"
-              className="absolute top-[70px] sm:top-2/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-56 sm:h-80"
-            />
-          </div>
-        </div>
-
-        {/* Menu Items Section - Centered Vertically */}
-        <div className="flex-grow flex items-center justify-end px-2 sm:px-10 pt-20">
+        <div className="flex-grow flex items-center justify-end px-8">
           <div className="right-5 text-right flex flex-col">
             {/* GET TICKETS */}
-            <Link href="https://www.fourvenues.com/es/bogart">
-              <span className="group block mb-4 font-bold text-rose-900 hover:text-gray-700 transition-all duration-300 ease-in-out text-2xl sm:text-5xl">
+            {/* <Link href="https://www.fourvenues.com/es/bogart"> */}
+            <a href="/events">
+              <span className="group block sm:mb-2 font-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-2xl sm:text-5xl">
                 <span className="inline-block transform transition-all duration-300 ease-in-out group-hover:skew-x-12 group-hover:scale-90 origin-right">
-                  GET TICKETS
+                  TICKETS
                 </span>
               </span>
-            </Link>
+            </a>
 
             {/* PRODUCTS */}
-            <Link href="/products">
-              <span className="group block mb-4 font-bold text-rose-900 hover:text-gray-700 transition-all duration-300 ease-in-out text-lg sm:text-2xl">
+            <Link href="/">
+              <span className="group block mb-1 sm:mb-4 font-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-lg sm:text-2xl">
                 <span className="inline-block transform transition-all duration-300 ease-in-out group-hover:skew-x-12 group-hover:scale-90 origin-right">
-                  PRODUCTS
+                  HISTORIA
                 </span>
               </span>
-            </Link>
+            </Link>    
 
-            {/* RENDERS */}
-            <Link href="/renders">
-              <span className="group block mb-4 font-bold text-rose-900 hover:text-gray-700 transition-all duration-300 ease-in-out text-lg sm:text-2xl">
-                <span className="inline-block transform transition-all duration-300 ease-in-out group-hover:skew-x-12 group-hover:scale-90 origin-right">
-                  RENDERS
-                </span>
-              </span>
-            </Link>
-
-            {/* HISTORY */}
-            <Link href="/history">
-              <span className="group block mb-4 font-bold text-rose-900 hover:text-gray-700 transition-all duration-300 ease-in-out text-lg sm:text-2xl">
-                <span className="inline-block transform transition-all duration-300 ease-in-out group-hover:skew-x-12 group-hover:scale-90 origin-right">
-                  HISTORY
-                </span>
-              </span>
-            </Link>
-          </div>
-        </div>
-
-        {/* Social Icons Section */}
-        <div className="w-full flex justify-start items-end p-4 px-6 mb-2">
-          <div className="flex items-center space-x-4">
+            <div className="flex items-center justify-end space-x-4">
             <a
               href="https://www.instagram.com/bogartconcept/"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-zinc-400 hover:text-gray-200 transition-colors"
+              className="flex items-center space-x-2 text-white hover:text-gray-200 transition-colors"
             >
-              <FontAwesomeIcon icon={faInstagram} className="w-9 h-9" />
+              <FontAwesomeIcon icon={faInstagram} className="w-4 h-4 sm:w-5 sm:h-5" />
             </a>
             <a
               href="https://www.tiktok.com/@bogartconcept"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center space-x-2 text-zinc-400 hover:text-gray-200 transition-colors"
+              className="flex items-center space-x-2 text-white hover:text-gray-200 transition-colors"
             >
-              <FontAwesomeIcon icon={faTiktok} className="w-8 h-8" />
+              <FontAwesomeIcon icon={faTiktok} className="w-4 h-4 sm:w-5 sm:h-5" />
+            </a>
+            <a
+              href="https://open.spotify.com/playlist/1A1R4GjjCJhkBxE14BIjpU"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center space-x-2 text-white hover:text-gray-200 transition-colors"
+            >
+              <FontAwesomeIcon icon={faSpotify} className="w-4 h-4 sm:w-5 sm:h-5" />
             </a>
           </div>
-        </div>
+          </div>
+        </div>       
       </div>
     </div>
+
+    <div
+    className="relative min-h-screen font-geist sm:hidden"
+    style={{
+      backgroundImage: `url('/imgs/VERTICAL_AMPLIADA_4K.png')`,
+      backgroundSize: "cover",
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+    }}
+    >
+    <div className="min-h-screen flex flex-col w-full">
+      <div className="flex-grow flex items-center justify-end px-3">
+        <div className="right-5 text-right flex flex-col">
+          {/* GET TICKETS */}
+          {/* <Link href="https://www.fourvenues.com/es/bogart"> */}
+          <a href="/events">
+            <span className="group block sm:mb-2 font-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-3xl sm:text-5xl">
+              <span className="inline-block transform transition-all duration-300 ease-in-out group-hover:skew-x-12 group-hover:scale-90 origin-right">
+                TICKETS
+              </span>
+            </span>
+          </a>
+
+          {/* PRODUCTS */}
+          <Link href="/">
+            <span className="group block mb-1 sm:mb-4 font-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-xl sm:text-2xl">
+              <span className="inline-block transform transition-all duration-300 ease-in-out group-hover:skew-x-12 group-hover:scale-90 origin-right">
+                HISTORIA
+              </span>
+            </span>
+          </Link>    
+
+          <div className="flex items-center justify-end space-x-4">
+          <a
+            href="https://www.instagram.com/bogartconcept/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 text-white hover:text-gray-200 transition-colors"
+          >
+            <FontAwesomeIcon icon={faInstagram} className="w-4 h-4 sm:w-5 sm:h-5" />
+          </a>
+          <a
+            href="https://www.tiktok.com/@bogartconcept"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 text-white hover:text-gray-200 transition-colors"
+          >
+            <FontAwesomeIcon icon={faTiktok} className="w-4 h-4 sm:w-5 sm:h-5" />
+          </a>
+          <a
+            href="https://open.spotify.com/playlist/1A1R4GjjCJhkBxE14BIjpU"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-2 text-white hover:text-gray-200 transition-colors"
+          >
+            <FontAwesomeIcon icon={faSpotify} className="w-4 h-4 sm:w-5 sm:h-5" />
+          </a>
+        </div>
+        </div>
+      </div>       
+    </div>
+    </div>
+    </>
   );
 }
