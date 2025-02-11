@@ -5,11 +5,13 @@ import Link from "next/link"
 import Image from "next/image"
 
 const menuItems = [
-  { text: "EVENT", url: "https://www.fourvenues.com/es/bogart", enabled: true, text_size: '4xl' },
-  { text: "PRODUCTS", url: "/products", enabled: false, text_size: 'xl' },
-  { text: "RENDERS", url: "/renders", enabled: false,  text_size: 'xl' },
-  { text: "HISTORY", url: "/history", enabled: false,  text_size: 'xl' },
+  { text: "GET TICKETS", url: "https://www.fourvenues.com/es/bogart", enabled: true, text_size: '5xl', mobile_text_size: '2xl' },
+  { text: "PRODUCTS", url: "/products", enabled: false, text_size: '2xl',  mobile_text_size: 'lg' },
+  { text: "RENDERS", url: "/renders", enabled: false,  text_size: '2xl' ,  mobile_text_size: 'lg' },
+  { text: "HISTORY", url: "/history", enabled: false,  text_size: '2xl' ,  mobile_text_size: 'lg' },
 ]
+
+// const get
 
 export default function HomeComponent() {
   return (
@@ -23,17 +25,19 @@ export default function HomeComponent() {
         backgroundPosition: "center",
       }}
     >
-    <div className="min-h-screen  flex w-full flex-col ">    
-    <div className="relative w-full h-48">
-        <img src="/imgs/logo_no_bg.png" alt="Your Image" className="absolute top-2/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-80"/>
-    </div>
-      <div>
-        <div className="absolute right-5 bottom-36 text-right"> 
+    <div className="min-h-screen  flex w-full flex-col">    
+      <div className="relative w-full h-full">
+        <div className="h-48 relative w-full ">
+          <img src="/imgs/logo_no_bg.png" alt="Your Image" className="absolute top-[70px] sm:top-2/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-auto h-56 sm:h-80"/>
+        </div>
+      </div>
+      <div className="h-full pt-40 sm:pt-28 px-2 sm:px-10">
+        <div className=" right-5 bottom-36 text-right"> 
           {menuItems.map((item, index) => (
             <Link
               key={index}
               href={item.enabled ? item.url : ''}
-              className={`group block mb-4 text-${item.text_size} font-bold hover:text-orange-600 text-gray-700 transition-all duration-300 ease-in-out`}
+              className={`group block mb-4 text-${item.mobile_text_size} sm:text-${item.text_size} font-bold text-rose-900 hover:text-gray-700 transition-all duration-300 ease-in-out`}
             >            
               <span className="inline-block transform transition-all duration-300 ease-in-out group-hover:skew-x-12 group-hover:scale-90 origin-right">
                 {item.text}
@@ -43,21 +47,21 @@ export default function HomeComponent() {
         </div>
       </div>
 
-      <div className="mt-auto w-full flex justify-start items-end p-4 px-6 mb-2">
-        <div className="flex space-x-4">
+      <div className=" w-full flex flex-grow  justify-start items-end p-4 px-6 mb-2 ">
+        <div className="flex items-center space-x-4">
           <a
             href="https://www.instagram.com/bogartconcept/"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-2 text-gray-900 hover:text-gray-200 transition-colors"
+            className="flex items-center space-x-2 text-zinc-400 hover:text-gray-200 transition-colors"
           >
-            <FontAwesomeIcon icon={faInstagram} className="w-8 h-8" />
+            <FontAwesomeIcon icon={faInstagram} className="w-9 h-9" />
           </a>
           <a
             href="https://www.tiktok.com/@bogartconcept"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-2 text-gray-900 hover:text-gray-200 transition-colors"
+            className="flex items-center space-x-2 text-zinc-400 hover:text-gray-200 transition-colors"
           >
             <FontAwesomeIcon icon={faTiktok} className="w-8 h-8" />
           </a>

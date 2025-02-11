@@ -22,5 +22,6 @@ export default {
     'text-3xl',
     'text-2xl',
     'text-xl',
+    'text-lg'
   ]
 } satisfies Config;
