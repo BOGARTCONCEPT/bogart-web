@@ -10,14 +10,12 @@ export default function Home() {
     script.src = "https://www.fourvenues.com/assets/iframe/bogart/events";
     script.async = true; // Important: Make the script asynchronous
 
-    // Append the script to the document body
     document.body.appendChild(script);
 
-    // Clean up the script when the component unmounts to prevent memory leaks
     return () => {
       document.body.removeChild(script);
     };
-  }, []); // Empty dependency array ensures this runs only once after mount
+  }, []);
 
   return (
     <div

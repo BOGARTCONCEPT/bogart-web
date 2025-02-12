@@ -7,10 +7,13 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
+    extend: { // Only ONE extend object
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+      },
+      fontFamily: { // font-family extension is INSIDE the existing extend
+        'gotham-bold': ['GothamBold', 'sans-serif'],
       },
     },
   },

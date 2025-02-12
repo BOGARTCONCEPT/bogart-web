@@ -87,7 +87,7 @@ export default function HomeComponent() {
           {/* GET TICKETS */}
           {/* <Link href="https://www.fourvenues.com/es/bogart"> */}
           <a href="/events#events?date=2025-03&">
-            <span className="group block sm:mb-2 font-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-3xl sm:text-5xl">
+            <span className="group block sm:mb-2 font-gotham-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-3xl sm:text-5xl">
               <span className="inline-block transform transition-all duration-300 ease-in-out group-hover:skew-x-12 group-hover:scale-90 origin-right">
                 TICKETS
               </span>
@@ -96,7 +96,7 @@ export default function HomeComponent() {
 
           {/* PRODUCTS */}
           <Link href="/history">
-            <span className="group block mb-1 sm:mb-4 font-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-xl sm:text-2xl">
+            <span className="font-gotham-bold group block mb-1 sm:mb-4  text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-xl sm:text-2xl">
               <span className="inline-block transform transition-all duration-300 ease-in-out group-hover:skew-x-12 group-hover:scale-90 origin-right">
                 HISTORIA
               </span>

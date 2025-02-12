@@ -19,3 +19,17 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* globals.css */
+@font-face {
+  font-family: 'GothamBold';
+  /* Choose a name (e.g., GothamBold) */
+  src: url('/fonts/Gotham_Bold.woff2') format('woff2'),
+    /* Path relative to public */
+    url('/fonts/Gotham_Bold.woff') format('woff');
+  font-weight: bold;
+  /* Or whatever weight is appropriate */
+  font-style: normal;
+  font-display: swap;
+  /* VERY IMPORTANT */
+}
