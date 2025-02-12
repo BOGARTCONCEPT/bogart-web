@@ -4,7 +4,7 @@ export default function History() {
   return (
     <>
      <div
-      className="relative min-h-screen font-geist sm:hidden justify-center"
+      className="relative min-h-screen font-geist sm:hidden justify-center items-center flex"
       style={{
         backgroundImage: `url('/imgs/vertical_history.jpeg')`,
         backgroundSize: "cover",
@@ -12,17 +12,17 @@ export default function History() {
         backgroundPosition: "center",
       }}
     >
-      <div className="p-5 w-full sm:text-3xl text-white font-semibold  text-center">
-      <div className="mt-20 h-48 flex flex-col gap-y-8">
+      <div className="p-5 w-full h-full flex text-5xl text-white ">
+      <div className="flex flex-col">
         <span className="font-gotham-bold">
-        “Welcome to Bogart’s universe, where souls dance.”
+        “WELCOME TO BOGART’S UNIVERSE, WHERE SOULS DANCE.”
         </span>
       </div>
       </div>
     </div>
     
     <div
-      className="hidden sm:flex relative min-h-screen font-geist  justify-center"
+      className="hidden sm:flex relative min-h-screen font-geist justify-center items-center px-10"
       style={{
         backgroundImage: `url('/imgs/horizontal_history.jpeg')`,
         backgroundSize: "cover",
@@ -30,9 +30,9 @@ export default function History() {
         backgroundPosition: "center",
       }}
     >
-      <div className="p-5 w-3/5 sm:text-3xl text-white font-semibold mt-48 sm:mt-16 text-center">
-        <span className="font-gotham-bold">
-        “Welcome to Bogart’s universe, where souls dance.”
+      <div className="text-[90px] text-white text-center">
+        <span className="font-gotham-bold capitalize">
+        “WELCOME TO BOGART’S UNIVERSE, WHERE SOULS DANCE.”
         </span>
       </div>
     </div>
