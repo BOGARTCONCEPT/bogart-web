@@ -7,7 +7,7 @@ export default function Home() {
   useEffect(() => {
     // Load the Fourvenues script dynamically
     const script = document.createElement('script');
-    script.src = "https://www.fourvenues.com/assets/iframe/joan-sicav/events";
+    script.src = "https://www.fourvenues.com/assets/iframe/bogart/events";
     script.async = true; // Important: Make the script asynchronous
 
     // Append the script to the document body

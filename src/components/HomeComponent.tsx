@@ -22,8 +22,8 @@ export default function HomeComponent() {
         <div className="flex-grow flex items-center justify-end px-8">
           <div className="right-5 text-right flex flex-col">
             {/* GET TICKETS */}
-            {/* <Link href="https://www.fourvenues.com/es/bogart"> */}
-            <a href="/events">
+            {/* <Link href="https://www.fourvenues.com/es/bogart"> */}          
+            <a href="/events#events?date=2025-03&">
               <span className="group block sm:mb-2 font-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-2xl sm:text-5xl">
                 <span className="inline-block transform transition-all duration-300 ease-in-out group-hover:skew-x-12 group-hover:scale-90 origin-right">
                   TICKETS
@@ -32,7 +32,7 @@ export default function HomeComponent() {
             </a>
 
             {/* PRODUCTS */}
-            <Link href="/">
+            <Link href="/history">
               <span className="group block mb-1 sm:mb-4 font-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-lg sm:text-2xl">
                 <span className="inline-block transform transition-all duration-300 ease-in-out group-hover:skew-x-12 group-hover:scale-90 origin-right">
                   HISTORIA
@@ -95,7 +95,7 @@ export default function HomeComponent() {
           </a>
 
           {/* PRODUCTS */}
-          <Link href="/">
+          <Link href="/history">
             <span className="group block mb-1 sm:mb-4 font-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-xl sm:text-2xl">
               <span className="inline-block transform transition-all duration-300 ease-in-out group-hover:skew-x-12 group-hover:scale-90 origin-right">
                 HISTORIA
