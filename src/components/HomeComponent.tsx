@@ -74,7 +74,7 @@ export default function HomeComponent() {
     <div
     className="relative min-h-screen font-geist sm:hidden"
     style={{
-      backgroundImage: `url('/imgs/VERTICAL_AMPLIADA_4K.png')`,
+      backgroundImage: `url('/imgs/VERTICAL_AMPLIADA_2K.png')`,
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
