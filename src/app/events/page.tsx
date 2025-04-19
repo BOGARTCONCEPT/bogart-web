@@ -1,4 +1,6 @@
 "use client";
+import ArrowScrollDownComponent from '@/components/ArrowScrollDownComponent';
+import JoinMonthlyInspoComponent from '@/components/JoinMonthlyInspoComponent';
 import { useRef, useEffect } from 'react';
 
 export default function Home() {
@@ -19,6 +21,7 @@ export default function Home() {
   }, []);
 
   return (
+    <>
     <div
       className="relative min-h-screen font-geist"
       style={{
@@ -28,7 +31,14 @@ export default function Home() {
         backgroundPosition: "center",
       }}
     >
-      <div id="fourvenues-iframe" ref={iframeContainerRef}></div>
+      <div className='min-h-[100vh] flex flex-col justify-between'>
+          <div id="fourvenues-iframe" ref={iframeContainerRef}></div>
+       <div className="w-full flex justify-center">
+          <ArrowScrollDownComponent />
+        </div>
+      </div>
+    <JoinMonthlyInspoComponent/>
     </div>
+    </>
   );
 }
