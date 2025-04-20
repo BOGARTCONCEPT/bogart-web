@@ -1,6 +1,5 @@
 "use client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram";
 import { faTiktok } from "@fortawesome/free-brands-svg-icons/faTiktok";
 import { faSpotify } from "@fortawesome/free-brands-svg-icons/faSpotify";
@@ -75,7 +74,7 @@ export default function HomeComponent() {
     return raw ? JSON.parse(raw) : { desktopBackgroundImages: {}, inspiringQuotes: {} };
   }
   
-  function saveUsageData(data: any) {
+  function saveUsageData(data: unknown) {
     localStorage.setItem("usage_data", JSON.stringify(data));
   }
   
