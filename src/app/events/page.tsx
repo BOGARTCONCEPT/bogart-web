@@ -1,4 +1,6 @@
 "use client";
+import ArrowScrollDownComponent from '@/components/ArrowScrollDownComponent';
+import JoinMonthlyInspoComponent from '@/components/JoinMonthlyInspoComponent';
 import { useRef, useEffect } from 'react';
 
 export default function Home() {
@@ -7,7 +9,8 @@ export default function Home() {
   useEffect(() => {
     // Load the Fourvenues script dynamically
     const script = document.createElement('script');
-    script.src = "https://www.fourvenues.com/assets/iframe/bogart/events";
+    // <script src="https://www.fourvenues.com/assets/iframe/joan-sicav/BPSD"></script>
+    script.src = "https://www.fourvenues.com/assets/iframe/joan-sicav/BPSD";
     script.async = true; // Important: Make the script asynchronous
 
     document.body.appendChild(script);
@@ -18,6 +21,7 @@ export default function Home() {
   }, []);
 
   return (
+    <>
     <div
       className="relative min-h-screen font-geist"
       style={{
@@ -27,7 +31,14 @@ export default function Home() {
         backgroundPosition: "center",
       }}
     >
-      <div id="fourvenues-iframe" ref={iframeContainerRef}></div>
+      <div className='min-h-[100vh] flex flex-col justify-between'>
+          <div id="fourvenues-iframe" ref={iframeContainerRef}></div>
+       <div className="w-full flex justify-center">
+          <ArrowScrollDownComponent />
+        </div>
+      </div>
+    <JoinMonthlyInspoComponent/>
     </div>
+    </>
   );
 }
