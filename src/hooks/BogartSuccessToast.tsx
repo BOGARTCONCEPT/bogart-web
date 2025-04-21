@@ -2,6 +2,7 @@ import BogartButtonComponent from '@/components/BogartButtonComponent';
 import { toast } from 'react-hot-toast';
 
 export const showBogartSuccessToast = () => {
+  // console.log('showBogartSuccessToast called');
   toast.custom(() => (
     <div
       className={`

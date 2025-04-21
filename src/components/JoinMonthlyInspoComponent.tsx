@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import BogartButtonComponent from "./BogartButtonComponent";
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
@@ -17,6 +17,7 @@ export default function JoinMonthlyInspoComponent({ isDarkMode }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [isValid, setIsValid] = useState(true); // 🔧 default to true to avoid initial error display
+  const [isMailSent, setIsMailSent] = useState(false);
 
   const toggleDropdown = () => setIsOpen((prev) => !prev);
 
@@ -34,13 +35,24 @@ export default function JoinMonthlyInspoComponent({ isDarkMode }: Props) {
         email,
         createdAt: serverTimestamp(),
       });
-      setEmail(""); // TODO set as localstorage
-      showBogartSuccessToast();
 
+      localStorage.setItem("bogart-monthly-email", email);
+      showBogartSuccessToast();
+      setIsMailSent(true);
+      setIsOpen(false);
     } catch (err) {
       console.error(err);
     }
   };
+
+  useEffect (() => {
+    const storedEmail = localStorage.getItem("bogart-monthly-email");
+    if (storedEmail) {
+      setEmail(storedEmail);
+      setIsMailSent(true);
+    }
+  }, []);
+  
 
   const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -81,10 +93,13 @@ export default function JoinMonthlyInspoComponent({ isDarkMode }: Props) {
                 onChange={onEmailChange}
                 autoComplete="email"
                 placeholder="bogart@concept.com"
-                className="bg-transparent focus:outline-none focus:ring-0 z-10 px-4 py-[6px] rounded-bl-lg w-full placeholder-zinc-300 font-bold text-white transition-all duration-300"
+                className={`
+                  bg-transparent focus:outline-none focus:ring-0 z-10 px-4 py-[6px] rounded-bl-lg w-full placeholder-zinc-300 font-bold text-white transition-all duration-300
+                  `}
+                disabled={isMailSent} 
               />
               <div className="p-1 bg-yellow-400 bg-opacity-40 hover:bg-opacity-60">
-                <BogartButtonComponent onClick={onEmailSubmit} />
+                <BogartButtonComponent onClick={onEmailSubmit} isDisabled={false} />
               </div>
             </div>      
           </div>
