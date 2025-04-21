@@ -1,11 +1,15 @@
 "use client";
 
+import NavbarComponent from "../components/NavbarComponent";
+
 export default function ScrollAnimation() {
   return (
     <>
+    
       <div className="hidden sm:block">
         <div className="h-screen font-gotham-bold overflow-y-scroll snap-y snap-mandatory scroll-smooth">
           <section className="h-screen snap-start bg-zinc-900">
+          <NavbarComponent isFixed={true}/>  
             <div className="w-full h-full flex flex-col sm:flex-row items-center min-h-screen">
               <div className="flex flex-col w-full h-64 sm:min-h-screen justify-center px-2 ">
                 <span className=" text-2xl sm:text-4xl font-bold text-right ">
@@ -121,10 +125,14 @@ export default function ScrollAnimation() {
       </div>
       {/* Mobile */}
       <div className="block sm:hidden">
-      <div className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
+        <div className="h-screen overflow-y-scroll snap-y snap-mandatory scroll-smooth">
         
         {/* SECTION 1 */}
         <section className="h-screen snap-start relative bg-zinc-900">
+          <div className="relative z-20">
+            <NavbarComponent />
+          </div>
+
           <img
             src="/imgs/VERTICAL.png"
             alt="3D Animation"

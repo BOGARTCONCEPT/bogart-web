@@ -1,15 +1,11 @@
 "use client";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram";
-import { faTiktok } from "@fortawesome/free-brands-svg-icons/faTiktok";
-import { faSpotify } from "@fortawesome/free-brands-svg-icons/faSpotify";
-import Link from "next/link";
 import { useEffect } from "react";
 import { useState } from "react";
 import JoinMonthlyInspoComponent from "./JoinMonthlyInspoComponent";
 import { getUsageData, saveUsageData } from "@/services/getLocalStorageItems";
 import { getLeastUsedRandomItem } from "@/services/getLeastUsedRandomItem";
 import { DESKTOP_BACKGROUND_IMAGES, INSPIRING_QUOTES, MOBILE_BACKGROUND_IMAGES } from "@/constants/homePageConstants";
+import NavbarComponent from "./NavbarComponent";
 
 
 export default function HomeComponent() {
@@ -61,7 +57,7 @@ export default function HomeComponent() {
   return (
     <>
     <div
-      className=" relative font-geist hidden sm:block"
+      className="relative font-geist hidden sm:block"
       style={{
         backgroundImage: `url(${bgImage.image})`,
         backgroundSize: "cover",
@@ -71,48 +67,7 @@ export default function HomeComponent() {
     >
       <div className="min-h-[100vh] flex justify-between flex-col"> 
         <div>
-          <div className="flex flex-col w-full">
-            <div className="flex-grow flex px-8 ">
-              <div className="text-right flex space-x-4">
-                <div className="flex items-center mt-1 sm:mt-4">
-                  <Link href="/bogart-world">
-                    <span className="group block mb-1 sm:mb-4 font-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-lg sm:text-2xl">
-                      <span className="inline-block transform transition-all duration-300 ease-in-out  group-hover:scale-90 origin-right">
-                        BOGART WORLD
-                      </span>
-                    </span>
-                  </Link>    
-                </div>
-
-                <div className="flex items-center justify-end space-x-4">
-                <a
-                  href="https://www.instagram.com/bogartconcept/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-white hover:text-gray-200 transition-colors"
-                >
-                  <FontAwesomeIcon icon={faInstagram} className="w-4 h-4 sm:w-5 sm:h-5" />
-                </a>
-                <a
-                  href="https://www.tiktok.com/@bogartconcept"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-white hover:text-gray-200 transition-colors"
-                >
-                  <FontAwesomeIcon icon={faTiktok} className="w-4 h-4 sm:w-5 sm:h-5" />
-                </a>
-                <a
-                  href="https://open.spotify.com/playlist/1A1R4GjjCJhkBxE14BIjpU"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-white hover:text-gray-200 transition-colors"
-                >
-                  <FontAwesomeIcon icon={faSpotify} className="w-4 h-4 sm:w-5 sm:h-5" />
-                </a>
-              </div>
-              </div>
-            </div>       
-          </div>
+          <NavbarComponent />
           <div className="px-2 w-full mt-32 flex flex-col justify-center">
             <div className="text-center">
               <span className={`
@@ -153,48 +108,7 @@ export default function HomeComponent() {
     >
       <div className=" min-h-[100vh] flex justify-between flex-col"> 
         <div>
-          <div className="flex flex-col w-full">
-            <div className="flex-grow flex px-8 ">
-              <div className="text-right flex space-x-4">
-                <div className="flex items-center mt-1 sm:mt-4">
-                  <Link href="/bogart-world">
-                    <span className="group block mb-1 sm:mb-4 font-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-lg sm:text-2xl">
-                      <span className="inline-block transform transition-all duration-300 ease-in-out group-hover:scale-90 origin-right">
-                        BOGART WORLD
-                      </span>
-                    </span>
-                  </Link>    
-                </div>
-
-                <div className="flex items-center justify-end space-x-4">
-                <a
-                  href="https://www.instagram.com/bogartconcept/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-white hover:text-gray-200 transition-colors"
-                >
-                  <FontAwesomeIcon icon={faInstagram} className="w-4 h-4 sm:w-5 sm:h-5" />
-                </a>
-                <a
-                  href="https://www.tiktok.com/@bogartconcept"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-white hover:text-gray-200 transition-colors"
-                >
-                  <FontAwesomeIcon icon={faTiktok} className="w-4 h-4 sm:w-5 sm:h-5" />
-                </a>
-                <a
-                  href="https://open.spotify.com/playlist/1A1R4GjjCJhkBxE14BIjpU"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center space-x-2 text-white hover:text-gray-200 transition-colors"
-                >
-                  <FontAwesomeIcon icon={faSpotify} className="w-4 h-4 sm:w-5 sm:h-5" />
-                </a>
-              </div>
-              </div>
-            </div>       
-          </div>
+          <NavbarComponent />
           <div className="px-2 w-full mt-32 flex flex-col justify-center">
             <div className="text-center">
               <span className={ `
