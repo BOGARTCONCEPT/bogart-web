@@ -26,9 +26,9 @@ export default function ScrollAnimation() {
           <div className="w-full min-h-screen items-center flex justify-start px-6">
             <div className="py-8">
               <img
-                src="/imgs/VERTICAL.png"
+                src="/imgs/mobile/kid_mobile/1.png"
                 alt="3D Animation"
-                className="w-[700px] h-[850px] object-cover rounded-lg"
+                className="w-[700px] h-[750px] object-cover rounded-lg"
               />
             </div>
           </div>
@@ -160,7 +160,7 @@ export default function ScrollAnimation() {
             </div>
 
             <img
-              src="/imgs/VERTICAL.png"
+              src="/imgs/mobile/kid_mobile/1.png"
               alt="3D Animation"
               className="absolute inset-0 w-full h-full object-cover"
             />
