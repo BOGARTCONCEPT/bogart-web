@@ -16,7 +16,9 @@ export default function BogartButtonComponent({ onClick, isDisabled, iconSize }:
       <button
         disabled={isDisabled}
         onClick={() => {
-          onClick && onClick();
+          if (onClick) {
+            onClick();
+          }
         }}
         className={`
         ${isDisabled ? "cursor-default" : "cursor-pointer"}

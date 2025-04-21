@@ -99,7 +99,7 @@ export default function JoinMonthlyInspoComponent({ isDarkMode }: Props) {
                 disabled={isMailSent} 
               />
               <div className="p-1 bg-yellow-400 bg-opacity-40 hover:bg-opacity-60">
-                <BogartButtonComponent onClick={onEmailSubmit} isDisabled={false} />
+                <BogartButtonComponent onClick={onEmailSubmit} isDisabled={isMailSent} />
               </div>
             </div>      
           </div>
