@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/imgs/eye.ico" />
+        <link rel="icon" href="/imgs/trimmed-icon.png" />
         <link rel="preconnect" href="https://www.fourvenues.com" /> 
       </head>
       <body

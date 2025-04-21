@@ -5,6 +5,7 @@ import BogartButtonComponent from "./BogartButtonComponent";
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../app/services/firebase/firebase';
 import { isValidEmail } from "@/app/utils/isValidEmail";
+import { showBogartSuccessToast } from "@/hooks/BogartSuccessToast";
 
 const FIREBASE_MAIL_COLLECTION = "emails";
 
@@ -20,6 +21,7 @@ export default function JoinMonthlyInspoComponent({ isDarkMode }: Props) {
   const toggleDropdown = () => setIsOpen((prev) => !prev);
 
   const onEmailSubmit = async () => {
+    // showBogartSuccessToast();
     if (!isValidEmail(email)) {
       setIsValid(false);
       return;
@@ -33,6 +35,7 @@ export default function JoinMonthlyInspoComponent({ isDarkMode }: Props) {
         createdAt: serverTimestamp(),
       });
       setEmail(""); // TODO set as localstorage
+      showBogartSuccessToast();
 
     } catch (err) {
       console.error(err);
