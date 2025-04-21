@@ -3,22 +3,28 @@ import { useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import BogartButtonComponent from "./BogartButtonComponent";
 
+type Props = {
+  isDarkMode: boolean;
+};
 
-export default function JoinMonthlyInspoComponent() {
+export default function JoinMonthlyInspoComponent({  isDarkMode }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => setIsOpen((prev) => !prev);
 
   return (
     <div className="min-h-72 flex w-full font-geist justify-center">
-      <div className="flex flex-col  w-[240px]">
+      <div className="flex flex-col  w-[280px]">
 
         <div className=" rounded-lg w-full max-w-sm mx-auto text-center relative">
           <button
             onClick={toggleDropdown}
-            className=" text-white bg-orange-500 rounded-t-lg px-4 py-2 flex items-center justify-between gap-2 w-full"
+            className={`shadow-2xl text-white bg-orange-500 bg-opacity-60 rounded-t-lg px-4 py-2 flex items-center justify-between gap-2 w-full
+              ${ isOpen ? "rounded-t-lg" : "rounded-lg" }
+              font-gotham-bold text-sm
+              `}
           >
-            Join the monthly inspo
+            JOIN THE MONTHLY INSPO
             <ChevronDownIcon
               className={`h-5 w-5 transition-transform duration-300 ${
                 isOpen ? "rotate-180" : ""
@@ -30,7 +36,8 @@ export default function JoinMonthlyInspoComponent() {
             className={`
               flex bg-yellow-400 bg-opacity-30 rounded-b-lg justify-center w-full transition-all duration-300 overflow-hidden 
                text-zinc-800
-              ${ isOpen ? "max-h-40  opacity-100" : "max-h-0 opacity-0" }`
+              ${ isOpen ? "max-h-40  opacity-100" : "max-h-0 opacity-0" }
+              ${ isDarkMode ? "bg-yellow-400 bg-opacity-30" : 'bg-opacity-50 bg-zinc-800' }`
             }
           >
             <input

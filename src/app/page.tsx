@@ -1,7 +1,12 @@
 import HomeComponent from "@/components/HomeComponent";
+import { Toaster } from "react-hot-toast";
 
 export default function Home() {
   return (
-    <HomeComponent />
+    <>  
+      <Toaster position="top-right" />
+
+      <HomeComponent />
+    </>
   );
 }

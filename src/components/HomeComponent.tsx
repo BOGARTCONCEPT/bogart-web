@@ -7,38 +7,16 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useState } from "react";
 import JoinMonthlyInspoComponent from "./JoinMonthlyInspoComponent";
-import ArrowScrollDownComponent from "./ArrowScrollDownComponent";
-
-const desktopBackgroundImages = [
-  { id: '/imgs/kid_desktop/1.png', image: '/imgs/kid_desktop/1.png' },
-  { id: '/imgs/kid_desktop/2.png', image: '/imgs/kid_desktop/2.png' },
-  { id: '/imgs/rupestre2.jpeg', image: '/imgs/rupestre2.jpeg' },
-  { id: '/imgs/ropa_amarilla.jpeg' , image: '/imgs/ropa_amarilla.jpeg' },
-];
-
-const inspiringQuotes = [
-  { id: 'You’re one moment away from something extraordinary.', quote: 'You’re one moment away from something extraordinary.' },
-  { id: 'When was the last time that you felt inspired?', quote: 'When was the last time that you felt inspired?' },
-  { id: 'You were made to feel something greater.', quote: 'You were made to feel something greater.' },
-  { id: 'Remember what it feels like to dream?', quote: 'Remember what it feels like to dream?' },
-  { id: 'Some feelings can’t be explained, only lived.', quote: 'Some feelings can’t be explained, only lived.' },
-];
-
-const mobileBackgroundImages = [
-  {id: '/imgs/rupestre1.jpeg', image: '/imgs/rupestre1.jpeg' },
-  {id: '/imgs/mobile/kid_mobile/1.png', image: '/imgs/mobile/kid_mobile/1.png' },
-  {id: '/imgs/mobile/kid_mobile/2.png', image: '/imgs/mobile/kid_mobile/2.png' },
-  {id: '/imgs/mobile/kid_mobile/3.png', image: '/imgs/mobile/kid_mobile/3.png' },
-  {id: '/imgs/mobile/kid_mobile/4.png', image: '/imgs/mobile/kid_mobile/4.png' },
-  {id: '/imgs/mobile/yelllow_clothes.jpeg', image: '/imgs/mobile/yelllow_clothes.jpeg' },
-  {id: '/imgs/mobile/cuadros_phone.jpeg', image: '/imgs/mobile/cuadros_phone.jpeg' },
-]
+import { getUsageData, saveUsageData } from "@/app/services/getLocalStorageItems";
+import { getLeastUsedRandomItem } from "@/app/services/getLeastUsedRandomItem";
+import { DESKTOP_BACKGROUND_IMAGES, INSPIRING_QUOTES, MOBILE_BACKGROUND_IMAGES } from "@/app/constants/homePageConstants";
 
 
 export default function HomeComponent() {
-  const [bgImage, setBgImage] = useState(desktopBackgroundImages[0]);
-  const [mobileBgImage, setMobileBgImage] = useState(mobileBackgroundImages[0]);
+  const [bgImage, setBgImage] = useState(DESKTOP_BACKGROUND_IMAGES[0]);
+  const [mobileBgImage, setMobileBgImage] = useState(MOBILE_BACKGROUND_IMAGES[0]);
   const [quote, setQuote] = useState('');
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
     const viewCountKey = 'home_page_view_count';
@@ -49,13 +27,16 @@ export default function HomeComponent() {
     // Get usage data
     const usage = getUsageData();
   
-    const image = getLeastUsedRandomItem(desktopBackgroundImages, usage.desktopBackgroundImages);
-    const mobileImage = getLeastUsedRandomItem(mobileBackgroundImages, usage.desktopBackgroundImages);
-    const quoteItem = getLeastUsedRandomItem(inspiringQuotes, usage.inspiringQuotes);
+    const image = getLeastUsedRandomItem(DESKTOP_BACKGROUND_IMAGES, usage.desktopBackgroundImages);
+    console.log(MOBILE_BACKGROUND_IMAGES, usage.mobileBackgroundImages)
+    const mobileImage = getLeastUsedRandomItem(MOBILE_BACKGROUND_IMAGES, usage.mobileBackgroundImages);
+
+    const quoteItem = getLeastUsedRandomItem(INSPIRING_QUOTES, usage.inspiringQuotes);
   
     // Update usage counts
     usage.desktopBackgroundImages[image.id] = (usage.desktopBackgroundImages[image.id] || 0) + 1;
     usage.inspiringQuotes[quoteItem.id] = (usage.inspiringQuotes[quoteItem.id] || 0) + 1;
+    usage.mobileBackgroundImages[mobileImage.id] = (usage.mobileBackgroundImages[mobileImage.id] || 0) + 1;  
   
     // Save back to localStorage
     saveUsageData(usage);
@@ -64,31 +45,19 @@ export default function HomeComponent() {
     setBgImage(image);
     setMobileBgImage(mobileImage);
     setQuote(quoteItem.quote);
+    setDarkMode(!mobileImage.isClear);
   
     console.log(`User has visited this page ${newCount} times.`);
   }, []);
-  
 
-  function getUsageData() {
-    const raw = localStorage.getItem("usage_data");
-    return raw ? JSON.parse(raw) : { desktopBackgroundImages: {}, inspiringQuotes: {} };
-  }
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [darkMode]);  
   
-  function saveUsageData(data: unknown) {
-    localStorage.setItem("usage_data", JSON.stringify(data));
-  }
-  
-  function getLeastUsedRandomItem<T extends { id: string }>(
-    items: T[],
-    usageMap: Record<string, number>
-  ): T {
-    const minUsed = Math.min(...items.map(item => usageMap[item.id] || 0));
-    const leastUsedItems = items.filter(item => (usageMap[item.id] || 0) === minUsed);
-    const chosen = leastUsedItems[Math.floor(Math.random() * leastUsedItems.length)];
-    return chosen;
-  }
-  
-
   return (
     <>
     <div
@@ -146,13 +115,22 @@ export default function HomeComponent() {
           </div>
           <div className="px-2 w-full mt-32 flex flex-col justify-center">
             <div className="text-center">
-              <span className="text-white text-3xl sm:text-5xl font-gotham-bold">
+              <span className={`
+                text-white text-3xl sm:text-5xl font-gotham-bold
+                ${ darkMode ? 'text-white' : 'text-black' }
+                `}>
                 {quote}
               </span>
             </div>
             <div className="mt-12 flex w-full justify-center">
             <a href="/events">
-                <span className="rounded-lg  bg-zinc-50 hover:bg-opacity-60 bg-opacity-30 px-4 py-1 group block sm:mb-2 font-gotham-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-lg sm:text-2xl">
+                <span className={`
+                    rounded-lg px-4 py-1
+                  bg-zinc-50 hover:bg-opacity-60 bg-opacity-30
+                    group block sm:mb-2 font-gotham-bold text-white hover:text-gray-200 
+                    transition-all duration-300 ease-in-out
+                    text-lg sm:text-2xl`}
+                  >
                   <span>
                     GET TICKETS
                   </span>
@@ -160,16 +138,12 @@ export default function HomeComponent() {
               </a>
             </div>
           </div>
-        </div>  
-
-        <div className="w-full flex justify-center">
-          <ArrowScrollDownComponent />
-        </div>
+        </div>        
+      <JoinMonthlyInspoComponent isDarkMode={darkMode} />   
       </div>
-      <JoinMonthlyInspoComponent />   
     </div>
     <div
-      className="relative min-h-[120vh] font-geist block sm:hidden"
+      className="relative min-h-[100vh] font-geist block sm:hidden"
       style={{
         backgroundImage: `url(${mobileBgImage.image})`,
         backgroundSize: "cover",
@@ -177,7 +151,7 @@ export default function HomeComponent() {
         backgroundPosition: "center",
       }}
     >
-           <div className="min-h-[100vh] flex justify-between flex-col"> 
+      <div className=" min-h-[100vh] flex justify-between flex-col"> 
         <div>
           <div className="flex flex-col w-full">
             <div className="flex-grow flex px-8 ">
@@ -223,13 +197,17 @@ export default function HomeComponent() {
           </div>
           <div className="px-2 w-full mt-32 flex flex-col justify-center">
             <div className="text-center">
-              <span className="text-white text-3xl sm:text-5xl font-gotham-bold">
+              <span className={ `
+              text-white text-3xl sm:text-5xl font-gotham-bold 
+              `}>
                 {quote}
               </span>
             </div>
             <div className="mt-12 flex w-full justify-center">
             <a href="/events">
-                <span className="rounded-lg  bg-zinc-50 hover:bg-opacity-60 bg-opacity-30 px-4 py-1 group block sm:mb-2 font-gotham-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-lg sm:text-2xl">
+                <span className={`
+                rounded-lg   hover:bg-opacity-60 px-4 py-1 bg-zinc-50 bg-opacity-30 group block sm:mb-2 font-gotham-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-lg sm:text-2xl
+                `}>
                   <span>
                     GET TICKETS
                   </span>
@@ -239,11 +217,11 @@ export default function HomeComponent() {
           </div>
         </div>  
 
-        <div className="w-full flex justify-center">
+        {/* <div className="w-full flex justify-center">
           <ArrowScrollDownComponent />
-        </div>
+        </div> */}
+      <JoinMonthlyInspoComponent isDarkMode={darkMode} />   
       </div>
-      <JoinMonthlyInspoComponent />   
     </div>
 
     </>
