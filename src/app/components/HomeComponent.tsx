@@ -75,10 +75,10 @@ export default function HomeComponent() {
             <div className="flex-grow flex px-8 ">
               <div className="text-right flex space-x-4">
                 <div className="flex items-center mt-1 sm:mt-4">
-                  <Link href="/history">
+                  <Link href="/bogart-world">
                     <span className="group block mb-1 sm:mb-4 font-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-lg sm:text-2xl">
-                      <span className="inline-block transform transition-all duration-300 ease-in-out group-hover:skew-x-12 group-hover:scale-90 origin-right">
-                        HISTORIA
+                      <span className="inline-block transform transition-all duration-300 ease-in-out  group-hover:scale-90 origin-right">
+                        BOGART WORLD
                       </span>
                     </span>
                   </Link>    
@@ -157,10 +157,10 @@ export default function HomeComponent() {
             <div className="flex-grow flex px-8 ">
               <div className="text-right flex space-x-4">
                 <div className="flex items-center mt-1 sm:mt-4">
-                  <Link href="/history">
+                  <Link href="/bogart-world">
                     <span className="group block mb-1 sm:mb-4 font-bold text-white hover:text-gray-200 transition-all duration-300 ease-in-out text-lg sm:text-2xl">
-                      <span className="inline-block transform transition-all duration-300 ease-in-out group-hover:skew-x-12 group-hover:scale-90 origin-right">
-                        HISTORIA
+                      <span className="inline-block transform transition-all duration-300 ease-in-out group-hover:scale-90 origin-right">
+                        BOGART WORLD
                       </span>
                     </span>
                   </Link>    
