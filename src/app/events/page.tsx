@@ -10,7 +10,7 @@ export default function Home() {
     // Load the Fourvenues script dynamically
     const script = document.createElement('script');
     // <script src="https://www.fourvenues.com/assets/iframe/joan-sicav/BPSD"></script>
-    script.src = "https://www.fourvenues.com/assets/iframe/joan-sicav/BPSD";
+    script.src = "https://www.fourvenues.com/assets/iframe/bogart/5QZ4";
     script.async = true; // Important: Make the script asynchronous
 
     document.body.appendChild(script);
