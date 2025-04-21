@@ -2,6 +2,10 @@
 import { useState } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import BogartButtonComponent from "./BogartButtonComponent";
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../app/services/firebase/firebase';
+import { isValidEmail } from "@/app/utils/isValidEmail";
+
 
 type Props = {
   isDarkMode: boolean;
@@ -9,13 +13,29 @@ type Props = {
 
 export default function JoinMonthlyInspoComponent({  isDarkMode }: Props) {
   const [isOpen, setIsOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [isValid, setIsValid] = useState(false);
 
   const toggleDropdown = () => setIsOpen((prev) => !prev);
 
+  const onEmailSubmit = async () => {  
+    if (!isValidEmail(email)) {
+      return setIsValid(false);    
+    }
+
+    try {
+      await addDoc(collection(db, 'emails'), {
+        email: 'joanmiralles.p@gmail.com',
+        createdAt: serverTimestamp(),
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="min-h-72 flex w-full font-geist justify-center">
-      <div className="flex flex-col  w-[280px]">
-
+      <div className="flex flex-col w-[280px]">
         <div className=" rounded-lg w-full max-w-sm mx-auto text-center relative">
           <button
             onClick={toggleDropdown}
@@ -48,7 +68,7 @@ export default function JoinMonthlyInspoComponent({  isDarkMode }: Props) {
               className="bg-transparent focus:outline-none focus:ring-0 z-10 px-4 py-[6px] rounded-bl-lg w-full placeholder-zinc-300 font-bold text-white transition-all duration-300"
             />
             <div className="p-1 bg-yellow-400 bg-opacity-40 hover:bg-opacity-60">
-              <BogartButtonComponent/>  
+              <BogartButtonComponent onClick={onEmailSubmit}/>  
             </div>
           </div>
         </div>

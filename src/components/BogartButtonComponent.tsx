@@ -1,14 +1,13 @@
-"use client";
+type Props = {
+  onClick: () => Promise<void>;
+};
 
-import { showBogartSuccessToast } from "@/hooks/BogartSuccessToast";
-
-
-export default function BogartButtonComponent() {
+export default function BogartButtonComponent({ onClick }: Props) {
   return (    
     <>
       <button
         onClick={() => {
-          showBogartSuccessToast()
+          onClick();
         }}
         className="w-8 h-8 py-4 px-6 bg-no-repeat bg-center bg-contain   border-none"
         style={{ backgroundImage: "url('/imgs/trimmed-icon.png')" }} 
