@@ -1,7 +1,7 @@
 import { toast } from 'react-hot-toast'
 
 export const showBogartSuccessToast = () => {
-  toast.custom((t) => (
+  toast.custom(() => (
     <div
       className={`
         bg-orange-500 bg-opacity-60 text-white font-gotham-bold
