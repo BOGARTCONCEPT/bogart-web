@@ -1,4 +1,4 @@
-import BogartButtonComponent from '@/components/BogartButtonComponent';
+import BogartButtonComponent from '@/app/components/BogartButtonComponent';
 import { toast } from 'react-hot-toast';
 
 export const showBogartSuccessToast = () => {

@@ -1,6 +1,6 @@
 "use client";
-import ArrowScrollDownComponent from '@/components/ArrowScrollDownComponent';
-import JoinMonthlyInspoComponent from '@/components/JoinMonthlyInspoComponent';
+import ArrowScrollDownComponent from '@/app/components/ArrowScrollDownComponent';
+import JoinMonthlyInspoComponent from '@/app/components/JoinMonthlyInspoComponent';
 import { useRef, useEffect } from 'react';
 
 export default function Home() {

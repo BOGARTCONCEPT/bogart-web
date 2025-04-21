@@ -7,9 +7,9 @@ import Link from "next/link";
 import { useEffect } from "react";
 import { useState } from "react";
 import JoinMonthlyInspoComponent from "./JoinMonthlyInspoComponent";
-import { getUsageData, saveUsageData } from "@/app/services/getLocalStorageItems";
-import { getLeastUsedRandomItem } from "@/app/services/getLeastUsedRandomItem";
-import { DESKTOP_BACKGROUND_IMAGES, INSPIRING_QUOTES, MOBILE_BACKGROUND_IMAGES } from "@/app/constants/homePageConstants";
+import { getUsageData, saveUsageData } from "@/services/getLocalStorageItems";
+import { getLeastUsedRandomItem } from "@/services/getLeastUsedRandomItem";
+import { DESKTOP_BACKGROUND_IMAGES, INSPIRING_QUOTES, MOBILE_BACKGROUND_IMAGES } from "@/constants/homePageConstants";
 
 
 export default function HomeComponent() {

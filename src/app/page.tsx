@@ -1,4 +1,4 @@
-import HomeComponent from "@/components/HomeComponent";
+import HomeComponent from "@/app/components/HomeComponent";
 import { Toaster } from "react-hot-toast";
 
 export default function Home() {

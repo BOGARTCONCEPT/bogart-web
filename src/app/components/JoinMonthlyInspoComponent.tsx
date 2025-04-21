@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import BogartButtonComponent from "./BogartButtonComponent";
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../app/services/firebase/firebase';
-import { isValidEmail } from "@/app/utils/isValidEmail";
+import { db } from '../../services/firebase/firebase';
+import { isValidEmail } from "@/utils/isValidEmail";
 import { showBogartSuccessToast } from "@/hooks/BogartSuccessToast";
 
 const FIREBASE_MAIL_COLLECTION = "emails";
