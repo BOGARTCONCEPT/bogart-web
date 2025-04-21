@@ -170,7 +170,7 @@ export default function ScrollAnimation() {
                 Creamos pequeñas historias que metaforizan el mensaje de Bogart. Un universo creativo inventado por nosotros para inspirar desde lo visual y lo simbólico.
               </p>
             </div>
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20">
               <ArrowScrollDownComponent />
             </div>
           </section>
@@ -188,7 +188,7 @@ export default function ScrollAnimation() {
                 La luz que nos une desde el descubrimiento del fuego. Nos hace sentir en casa, cómodos, en un ambiente distendido e introspectivo. Es nuestra forma de crear calidez emocional.
               </p>
             </div>
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20">
               <ArrowScrollDownComponent />
             </div>
           </section>
@@ -206,7 +206,7 @@ export default function ScrollAnimation() {
                 Diseñamos espacios con elementos orgánicos e inspiración en otras culturas. Cada detalle invita a vivir la experiencia desde dentro, como si formara parte de un mundo paralelo.
               </p>
             </div>
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20">
               <ArrowScrollDownComponent />
             </div>
           </section>
@@ -224,7 +224,7 @@ export default function ScrollAnimation() {
                 Bogart es un universo que busca mantener a su comunidad inspirada. Cada post lanza un mensaje que conecta, motiva y recuerda que los sueños están al alcance.
               </p>
             </div>
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20">
+            <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20">
               <ArrowScrollDownComponent />
             </div>
           </section>
