@@ -1,5 +1,6 @@
 "use client";
 
+import ArrowScrollDownComponent from "../components/ArrowScrollDownComponent";
 import NavbarComponent from "../components/NavbarComponent";
 
 export default function ScrollAnimation() {
@@ -8,27 +9,32 @@ export default function ScrollAnimation() {
     
       <div className="hidden sm:block">
         <div className="h-screen font-gotham-bold overflow-y-scroll snap-y snap-mandatory scroll-smooth">
-          <section className="h-screen snap-start bg-zinc-900">
+          <section className="h-screen snap-start bg-zinc-900 ">
           <NavbarComponent isFixed={true}/>  
-            <div className="w-full h-full flex flex-col sm:flex-row items-center min-h-screen">
-              <div className="flex flex-col w-full h-64 sm:min-h-screen justify-center px-2 ">
-                <span className=" text-2xl sm:text-4xl font-bold text-right ">
-                  Animaciones 3D
-                </span>
-                <div className="w-full flex justify-end">
-                  <span className="sm:text-lg font-bold w-3/4 pt-4 sm:pt-6  text-right">
-                    Creamos pequeñas historias que metaforizan el mensaje de Bogart. Un universo creativo inventado por nosotros para inspirar desde lo visual y lo simbólico.
+            <div className="  w-full h-full flex flex-col items-center min-h-screen ">
+              <div className="flex flex-col sm:flex-row">
+                <div className="flex flex-col w-full h-64 sm:min-h-screen justify-center px-2 ">
+                  <span className=" text-2xl sm:text-4xl font-bold text-right ">
+                    Animaciones 3D
                   </span>
-                </div>
-              </div>
-              <div className="w-full min-h-screen items-center flex justify-start px-6">
-                <div className="py-8">
-                    <img              
-                      src="/imgs/VERTICAL.png"
-                      alt="3D Animation"
-                      className="w-[700px] h-[850px] object-cover rounded-lg"
-                    />
+                  <div className="w-full flex justify-end">
+                    <span className="sm:text-lg font-bold w-3/4 pt-4 sm:pt-6  text-right">
+                      Creamos pequeñas historias que metaforizan el mensaje de Bogart. Un universo creativo inventado por nosotros para inspirar desde lo visual y lo simbólico.
+                    </span>
                   </div>
+                </div>
+                <div className="w-full min-h-screen items-center flex justify-start px-6">
+                  <div className="py-8">
+                      <img              
+                        src="/imgs/VERTICAL.png"
+                        alt="3D Animation"
+                        className="w-[700px] h-[850px] object-cover rounded-lg"
+                        />
+                    </div>
+                </div>
+              </div>              
+              <div className="relative bottom-10 left-5">
+                <ArrowScrollDownComponent/>
               </div>
             </div>
           </section>
@@ -52,6 +58,7 @@ export default function ScrollAnimation() {
                 </span>
               </div>      
             </div>
+            <ArrowScrollDownComponent />
           </section>
           <section className="min-h-screen snap-start bg-zinc-900">
           <div className="w-full flex flex-col sm:flex-row items-center min-h-screen">
