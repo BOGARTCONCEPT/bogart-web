@@ -37,8 +37,9 @@ export default function Home() {
           <ArrowScrollDownComponent />
         </div>
       </div>
-    <JoinMonthlyInspoComponent/>
+    <JoinMonthlyInspoComponent isDarkMode={false}/>
     </div>
     </>
+    
   );
 }
