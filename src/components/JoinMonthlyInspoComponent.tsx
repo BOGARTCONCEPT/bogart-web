@@ -6,43 +6,54 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../app/services/firebase/firebase';
 import { isValidEmail } from "@/app/utils/isValidEmail";
 
+const FIREBASE_MAIL_COLLECTION = "emails";
 
 type Props = {
   isDarkMode: boolean;
 };
 
-export default function JoinMonthlyInspoComponent({  isDarkMode }: Props) {
+export default function JoinMonthlyInspoComponent({ isDarkMode }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
-  const [isValid, setIsValid] = useState(false);
+  const [isValid, setIsValid] = useState(true); // 🔧 default to true to avoid initial error display
 
   const toggleDropdown = () => setIsOpen((prev) => !prev);
 
-  const onEmailSubmit = async () => {  
+  const onEmailSubmit = async () => {
     if (!isValidEmail(email)) {
-      return setIsValid(false);    
+      setIsValid(false);
+      return;
     }
 
+    setIsValid(true);
+
     try {
-      await addDoc(collection(db, 'emails'), {
-        email: 'joanmiralles.p@gmail.com',
+      await addDoc(collection(db, FIREBASE_MAIL_COLLECTION), {
+        email,
         createdAt: serverTimestamp(),
       });
+      setEmail(""); // TODO set as localstorage
+
     } catch (err) {
       console.error(err);
     }
   };
 
+  const onEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+    setIsValid(true);
+  }
+
   return (
     <div className="min-h-72 flex w-full font-geist justify-center">
       <div className="flex flex-col w-[280px]">
-        <div className=" rounded-lg w-full max-w-sm mx-auto text-center relative">
+        <div className="rounded-lg w-full max-w-sm mx-auto text-center relative">
           <button
             onClick={toggleDropdown}
             className={`shadow-2xl text-white bg-orange-500 bg-opacity-60 rounded-t-lg px-4 py-2 flex items-center justify-between gap-2 w-full
-              ${ isOpen ? "rounded-t-lg" : "rounded-lg" }
-              font-gotham-bold text-sm
-              `}
+              ${isOpen ? "rounded-t-lg" : "rounded-lg"}
+              font-gotham-bold text-sm`}
           >
             JOIN THE MONTHLY INSPO
             <ChevronDownIcon
@@ -54,24 +65,31 @@ export default function JoinMonthlyInspoComponent({  isDarkMode }: Props) {
 
           <div
             className={`
-              flex bg-yellow-400 bg-opacity-30 rounded-b-lg justify-center w-full transition-all duration-300 overflow-hidden 
-               text-zinc-800
-              ${ isOpen ? "max-h-40  opacity-100" : "max-h-0 opacity-0" }
-              ${ isDarkMode ? "bg-yellow-400 bg-opacity-30" : 'bg-opacity-50 bg-zinc-800' }`
-            }
+              flex flex-col gap-1 bg-yellow-400 bg-opacity-30 rounded-b-lg justify-center w-full transition-all duration-300 overflow-hidden 
+              text-zinc-800
+              ${isOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}
+              ${isDarkMode ? "bg-yellow-400 bg-opacity-30" : 'bg-opacity-50 bg-zinc-800'}`}
           >
-            <input
-              id="email"
-              type="email"
-              autoComplete="email"
-              placeholder="bogart@concept.com"
-              className="bg-transparent focus:outline-none focus:ring-0 z-10 px-4 py-[6px] rounded-bl-lg w-full placeholder-zinc-300 font-bold text-white transition-all duration-300"
-            />
-            <div className="p-1 bg-yellow-400 bg-opacity-40 hover:bg-opacity-60">
-              <BogartButtonComponent onClick={onEmailSubmit}/>  
-            </div>
+            <div className="flex w-full">
+              <input
+                id="email"
+                type="email"
+                value={email}
+                onChange={onEmailChange}
+                autoComplete="email"
+                placeholder="bogart@concept.com"
+                className="bg-transparent focus:outline-none focus:ring-0 z-10 px-4 py-[6px] rounded-bl-lg w-full placeholder-zinc-300 font-bold text-white transition-all duration-300"
+              />
+              <div className="p-1 bg-yellow-400 bg-opacity-40 hover:bg-opacity-60">
+                <BogartButtonComponent onClick={onEmailSubmit} />
+              </div>
+            </div>      
           </div>
         </div>
+        {/* 🔧 Error Message */}
+        {!isValid && (
+          <p className="text-xs text-white px-2 ">Please enter a valid email address.</p>
+        )}
 
         {/* Image Container */}
         <div className="relative mt-4 h-[200px] mb-4">
