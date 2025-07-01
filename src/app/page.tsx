@@ -1,15 +1,17 @@
-import HomeComponent from "@/app/components/HomeComponent";
-import { Toaster } from "react-hot-toast";
-import OriginTracker from "./services/Tracker";
+import { Suspense } from 'react';
+import OriginTracker from './services/Tracker';
+import HomeComponent from './components/HomeComponent';
+import { Toaster } from 'react-hot-toast';
 
 export default function Home() {
   return (
-    <>  
-      <Toaster position="top-center" />
+    <>
+      <Suspense fallback={null}>
+        <OriginTracker />
+      </Suspense>
 
-       <OriginTracker />
-
-      <HomeComponent />
+    <Toaster position="top-center" />
+    <HomeComponent />
     </>
   );
 }
