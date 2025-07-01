@@ -1,12 +1,13 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { db } from '@/services/firebase/firebase';
 import { doc, getDoc, setDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
 
 export default function OriginTracker() {
   const searchParams = useSearchParams();
+  const router = useRouter();
 
   useEffect(() => {
     const origin = searchParams.get('origin');
@@ -15,7 +16,7 @@ export default function OriginTracker() {
     if (!origin || !event) return;
 
     const trackVisit = async () => {
-      try {    
+      try {
         const docId = `${origin}_${event}`;
         const ref = doc(db, 'origin_event_trackers', docId);
 
@@ -34,13 +35,20 @@ export default function OriginTracker() {
             updatedAt: serverTimestamp(),
           });
         }
+
+        // Remove 'origin' and 'event' from URL without reloading or scrolling
+        const url = new URL(window.location.href);
+        url.searchParams.delete('origin');
+        url.searchParams.delete('event');
+
+        router.replace(url.toString(), { scroll: false });
       } catch (error: any) {
-        console.log('Error while tracking visit:', error.message);
+        console.error('Error while tracking visit:', error.message);
       }
     };
 
-    trackVisit().catch(console.error);
-  }, [searchParams]);
+    trackVisit();
+  }, [searchParams, router]);
 
   return null;
 }
