@@ -42,8 +42,8 @@ export default function OriginTracker() {
         url.searchParams.delete('event');
 
         router.replace(url.toString(), { scroll: false });
-      } catch (error: any) {
-        console.error('Error while tracking visit:', error.message);
+      } catch (error) {
+        console.error('Error while tracking visit:', String(error));
       }
     };
 
