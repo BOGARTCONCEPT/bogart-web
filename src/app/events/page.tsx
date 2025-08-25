@@ -9,6 +9,7 @@ export default function Home() {
   useEffect(() => {
     // Load the Fourvenues script dynamically
     const script = document.createElement('script');
+    
     // <script src="https://www.fourvenues.com/assets/iframe/joan-sicav/BPSD"></script>
     script.src = "https://www.fourvenues.com/assets/iframe/bogart/TVC7";
     script.async = true; // Important: Make the script asynchronous
